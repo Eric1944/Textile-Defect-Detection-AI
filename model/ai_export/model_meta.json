@@ -1,0 +1,62 @@
+{
+  "project": "Studiju projekts — tekstila defektu kontrole",
+  "model": "B: ResNet18",
+  "arch": "ResNet18",
+  "img_size": 128,
+  "raw_size": 64,
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "class_names": [
+    "good",
+    "hole",
+    "objects",
+    "oil spot",
+    "thread error"
+  ],
+  "class_names_lv": [
+    "Derīgs",
+    "Caurums",
+    "Svešķermenis",
+    "Eļļas traips",
+    "Diega kļūda"
+  ],
+  "class_names_en": [
+    "Good",
+    "Hole",
+    "Foreign object",
+    "Oil spot",
+    "Thread error"
+  ],
+  "good_class_index": 0,
+  "defect_threshold": 0.07725811004638672,
+  "test_metrics": {
+    "Accuracy": 0.9479,
+    "Balanced acc.": 0.8466,
+    "Precision (makro)": 0.7324,
+    "Recall (makro)": 0.8466,
+    "F1 (makro)": 0.7806,
+    "AUC ROC (makro)": 0.9798
+  },
+  "test_binary": {
+    "Slieksnis": 0.0773,
+    "TN": 2962,
+    "FP": 514,
+    "FN": 21,
+    "TP": 343,
+    "TPR (recall)": 0.9423,
+    "FPR": 0.1479,
+    "Precision": 0.4002,
+    "Accuracy": 0.8607
+  },
+  "latency_ms": 2.759,
+  "torch_version": "2.15.0+cu132",
+  "created": "2026-11-13 17:07"
+}

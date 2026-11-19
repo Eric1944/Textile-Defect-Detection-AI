@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Programmas iestatījumi un atskaites (lokāli)
+settings.json
+*.log
+atskaite_*.pdf
+atskaite_*.html
+*.csv
+!**/labels.csv
+
+# Lielie faili (modelis > 50 MB → Git LFS vai GitHub Release)
+# textile_model_ts.pt
+*.pth
+checkpoints/
+
+# Sistēma
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Pagaidu faili
+*.tmp

@@ -1,0 +1,6 @@
+PyQt6>=6.5
+pyqtgraph>=0.13
+numpy
+Pillow
+torch
+asyncua            # tikai OPC UA režīmam / только для режима OPC UA / only for OPC UA mode

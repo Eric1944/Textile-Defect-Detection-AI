@@ -1,0 +1,45 @@
+// NW0: komandu apvienošana. SimMode = TRUE → fiziskie %I netiek ņemti vērā (PLCSIM)
+"StartCmd"  := "DB_Vision".HmiStart   OR (NOT "DB_Vision".SimMode AND "Start_PB");
+"StopCmd"   := "DB_Vision".HmiStop    OR (NOT "DB_Vision".SimMode AND NOT "Stop_PB");   // NC
+"EStopCmd"  := "DB_Vision".HmiEStop   OR (NOT "DB_Vision".SimMode AND NOT "EStop_PB");  // NC
+"SensorCmd" := "DB_Vision".PartSensor OR (NOT "DB_Vision".SimMode AND "Part_Sensor");
+
+// NW1: Run — START (S), STOP / avārijas stops (R, prioritāte)
+IF "StartCmd" THEN "Run" := TRUE; END_IF;
+IF "StopCmd" OR "EStopCmd" THEN "Run" := FALSE; END_IF;
+
+// NW2: sensora pozitīvā fronte → ImageRequest (lente apstājas)
+IF "SensorCmd" AND NOT "Sensor_Edge" AND "Run" THEN
+    "DB_Vision".ImageRequest := TRUE;
+END_IF;
+"Sensor_Edge" := "SensorCmd";
+
+// NW3: brāķis → stūmējs 1 s, BadCount + 1
+"DB_Vision".T_Push(IN := "DB_Vision".ResultReady AND "DB_Vision".Defect, PT := T#1S);
+IF "DB_Vision".ResultReady AND "DB_Vision".Defect THEN
+    "DB_Vision".BadCount := "DB_Vision".BadCount + 1;
+END_IF;
+
+// NW4: derīgs → zaļā lampa 1 s, GoodCount + 1
+"DB_Vision".T_Green(IN := "DB_Vision".ResultReady AND NOT "DB_Vision".Defect, PT := T#1S);
+IF "DB_Vision".ResultReady AND NOT "DB_Vision".Defect THEN
+    "DB_Vision".GoodCount := "DB_Vision".GoodCount + 1;
+END_IF;
+
+// NW5: kvitēšana
+IF "DB_Vision".ResultReady THEN
+    "DB_Vision".ImageRequest := FALSE;
+    "DB_Vision".ResultReady := FALSE;
+END_IF;
+
+// NW6: izejas un to kopijas DB_Vision (OPC UA lasīšanai)
+"Motor"      := "Run" AND NOT "DB_Vision".ImageRequest AND NOT "DB_Vision".T_Push.Q AND NOT "EStopCmd";
+"Pusher"     := "DB_Vision".T_Push.Q;
+"Lamp_Red"   := "DB_Vision".T_Push.Q;
+"Lamp_Green" := "DB_Vision".T_Green.Q;
+"Alarm"      := "EStopCmd";
+"DB_Vision".Motor     := "Motor";
+"DB_Vision".Pusher    := "Pusher";
+"DB_Vision".LampGreen := "Lamp_Green";
+"DB_Vision".LampRed   := "Lamp_Red";
+"DB_Vision".Alarm     := "Alarm";
