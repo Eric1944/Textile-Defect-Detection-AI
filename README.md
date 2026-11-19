@@ -90,9 +90,15 @@ Pārbaudīts ar reālu PLC programmu: skaitītāji `GoodCount` / `BadCount` TIA 
 
 ## Prezentācija un video
 
-- Prezentācija: [saite](LINK_PREZENTACIJA)
-- Video (5:29): [saite](LINK_VIDEO)
-- Projekta apraksts: [docs/Projekta_apraksts_Eriks_Stovba.docx](docs/Projekta_apraksts_Eriks_Stovba.docx)
+
+## Projekta materiāli
+
+- **Prezentācija (PowerPoint):** [Atvērt prezentāciju](https://rtucloud1-my.sharepoint.com/:p:/g/personal/eriks_stovba_edu_rtu_lv/cQoFh8tF7zTaT7K5KCtk3fV2EgUC0QGoLGtI07hcoDyoTkHjJQ?CID=475543D0-7656-4DC3-91F2-4716F4181221)
+- **Prezentācijas video:** [Skatīties video](https://rtucloud1-my.sharepoint.com/:v:/g/personal/eriks_stovba_edu_rtu_lv/IQB3r0WWd0-iTJ8bTZMHPp2bAaXuQqK1EalsZ4lnCCXzOB4?e=KGH76P)
+- **Projekta demonstrācijas video (5:29):** [Skatīties demonstrāciju](https://rtucloud1-my.sharepoint.com/:v:/g/personal/eriks_stovba_edu_rtu_lv/IQDQ3bB_mBM8Qo60nDb7FON8AbSgB9cwlfF5zmBUS2V47WY?e=0exRxX)
+- **Projekta apraksts (Word):** [Lejupielādēt dokumentu](docs/Projekta_apraksts_Eriks_Stovba.docx)
+- **Programmas pirmkods (Python, PyQt6):** [GitHub repozitorijs](https://github.com/Eric1944/Textile-Defect-Detection-AI)
+
 
 ## Tehnoloģijas
 
